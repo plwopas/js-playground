@@ -23,10 +23,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
       run: npm install
-    - uses: actions/upload-artifact@v3
-      with:
-        name: node_modules
-        path: node_modules
     - name: Git clone
       uses: actions/checkout@v3
     - name: Run unit tests
