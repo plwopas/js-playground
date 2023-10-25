@@ -11,13 +11,16 @@ on:
 jobs:
   install_test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 14, 16, 18 ]
     steps:
     - name: Git clone
       uses: actions/checkout@v3
-    - name: Setup Node.js 18
+    - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        node-version: 18
+        node-version: ${{ matrix.node-version }}
     - name: Install dependencies
       run: npm install
     - uses: actions/upload-artifact@v3
